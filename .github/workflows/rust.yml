@@ -17,6 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: cargo build --release --locked
+      run: | 
+      cargo generate-lockfile
+      cargo build --release --locked
     - name: Run tests
       run: cargo test --verbose
