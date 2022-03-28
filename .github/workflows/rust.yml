@@ -22,3 +22,14 @@ jobs:
         cargo build --release --locked
     - name: Run tests
       run: cargo test --verbose
+    - name: Upload files to a GitHub release
+      uses: svenstaro/upload-release-action@2.2.1
+      with:
+        # GitHub token.
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        # Local file to upload.
+        file: target/release/i3-auto-layout
+        # Tag to use as a release.
+        tag: ${{ github.ref }}
+
+
